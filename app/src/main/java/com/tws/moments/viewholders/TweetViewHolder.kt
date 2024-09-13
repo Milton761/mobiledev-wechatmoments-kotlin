@@ -26,7 +26,7 @@ class TweetViewHolder(private val binding: LayoutBaseTweetBinding) :
 
     private lateinit var imagesAdapter: ImagesAdapter
     private lateinit var commentsAdapter: CommentsAdapter
-    private var imageLoader = TWApplication.imageLoader
+//    private var imageLoader = TWApplication.imageLoader
     fun bind(tweet: TweetBean) {
         renderTextContent(tweet.content)
     }
@@ -51,11 +51,11 @@ class TweetViewHolder(private val binding: LayoutBaseTweetBinding) :
             binding.simpleImageView.visibility = View.VISIBLE
             binding.imagesRecyclerView.visibility = View.GONE
             val url = imagesBean[0].url
-            imageLoader.displayImage(
-                url, binding.simpleImageView
-            )
+//            imageLoader.displayImage(
+//                url, binding.simpleImageView
+//            )
             binding.simpleImageView.tag = url
-            imagesAdapter.images = null
+            imagesAdapter.images = emptyList()
         } else {
             binding.simpleImageView.visibility = View.GONE
             binding.imagesRecyclerView.visibility = View.VISIBLE

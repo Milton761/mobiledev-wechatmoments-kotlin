@@ -83,7 +83,7 @@ class MomentDividerItemDecoration(
         val childCount = parent.childCount
         for (i in startPosition until childCount) {
             val child = parent.getChildAt(i)
-            parent.layoutManager!!.getDecoratedBoundsWithMargins(child, bounds)
+            parent.layoutManager?.getDecoratedBoundsWithMargins(child, bounds)
             val right: Int = bounds.right + child.translationX.roundToInt() + offsets
             val left: Int = right - parent.context.dip(1)
             canvas.drawRect(left.toFloat(), top.toFloat(), right.toFloat(), bottom.toFloat(), paint)
