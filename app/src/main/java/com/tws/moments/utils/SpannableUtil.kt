@@ -9,7 +9,9 @@ import android.view.View
 import com.tws.moments.views.span.NoUnderLineSpan
 
 fun String.clickableSpan(onClick: ((View) -> Unit)? = null): SpannableString {
+
     return SpannableString(this).also {
+
         it.setSpan(object : ClickableSpan() {
             override fun onClick(widget: View) {
                 onClick?.invoke(widget)

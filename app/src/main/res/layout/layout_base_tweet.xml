@@ -24,6 +24,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="1dp"
+        android:text="test"
         android:background="?selectableItemBackground"
         android:textColor="#4152c9"
         app:layout_constraintStart_toEndOf="@+id/iv_sender_avatar"
@@ -49,6 +50,7 @@
             android:background="?selectableItemBackground"
             android:ellipsize="end"
             android:maxLines="5"
+            android:autoLink="web"
             android:textColor="@color/colorTweetContent"
             android:textSize="14sp"
             tools:ignore="MissingDefaultResource" />

@@ -7,7 +7,7 @@ import com.tws.moments.databinding.ItemMomentHeadBinding
 
 class HeaderViewHolder(private val binding: ItemMomentHeadBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    private var imageLoader = TWApplication.imageLoader
+//    private var imageLoader = TWApplication.imageLoader
 
     fun bind(userBean: UserBean?) {
 

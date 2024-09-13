@@ -6,12 +6,13 @@ import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.tws.moments.TWApplication
+import com.tws.moments.imageloader.GlideImageLoader
 import com.tws.moments.utils.dip
 
 class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.ImageHolder>() {
     var onImageClick: ((AppCompatImageView) -> Unit)? = null
 
-    var images: List<String>? = null
+    var images: List<String> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -30,14 +31,19 @@ class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.ImageHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return images?.size ?: 0
+        return images.size
     }
 
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
+
+
+
         (holder.itemView as? AppCompatImageView)?.let {
             val url = images!![position]
             it.tag = url
-            TWApplication.imageLoader.displayImage(url, it)
+//            TWApplication.imageLoader.displayImage(url, it)
+
+            GlideImageLoader(holder.itemView.context).displayImage(url, it)
         }
     }
 
