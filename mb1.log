@@ -1,0 +1,6 @@
+{"level":"info","message":"[mb:2525] mountebank v2.9.1 now taking orders - point your browser to http://localhost:2525/ for help","timestamp":"2024-09-13T22:57:17.272Z"}
+{"level":"info","message":"[mb:2525] PUT /imposters","timestamp":"2024-09-13T22:57:17.311Z"}
+{"level":"info","message":"[http:2727 User] Open for business...","timestamp":"2024-09-13T22:57:17.316Z"}
+{"level":"info","message":"[http:2727 User] ::ffff:127.0.0.1:55118 => GET /user/jsmith","timestamp":"2024-09-13T22:57:27.291Z"}
+{"level":"info","message":"[http:2727 User] ::ffff:127.0.0.1:55119 => GET /user/jsmith/tweets","timestamp":"2024-09-13T22:57:27.331Z"}
+{"level":"info","message":"[mb:2525] Adios - see you soon?","timestamp":"2024-09-13T23:02:27.766Z"}
