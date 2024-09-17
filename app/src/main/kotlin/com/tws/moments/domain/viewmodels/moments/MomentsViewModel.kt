@@ -1,6 +1,5 @@
 package com.tws.moments.domain.viewmodels.moments
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tws.moments.domain.model.profile.Profile
@@ -9,7 +8,6 @@ import com.tws.moments.domain.usecases.GetProfile
 import com.tws.moments.domain.usecases.GetTweets
 import com.tws.moments.presentation.ui.moments.MomentsState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -27,9 +25,9 @@ class MomentsViewModel @Inject constructor(
     val uiState: StateFlow<MomentsState> = _uiState.asStateFlow()
 
     fun getMoments(userId: String) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             val profile: Profile = getProfile(userId)
-            val tweets: List<Tweet> = getTweets.execute(GetTweets.Params(userId))
+            val tweets: List<Tweet> = getTweets(userId)
 
             MomentsState(
                 profile = profile,
@@ -39,12 +37,9 @@ class MomentsViewModel @Inject constructor(
         }
     }
 
-    fun loadMoreTweets() = viewModelScope.launch(Dispatchers.IO) {
-        val moments = uiState.value.copy()
+    fun loadMoreTweets() = viewModelScope.launch {
+        val moments: MomentsState = uiState.value.copy()
         moments.tweetsToShow = min(moments.tweets.size, moments.tweetsToShow + PAGE_SIZE)
-
-        Log.d("GG", "more tweets ${moments.tweetsToShow}")
-
         _uiState.value = moments
     }
 

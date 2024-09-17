@@ -12,9 +12,12 @@ class GetTweets @Inject constructor(
     class Params(val userId: String) : UseCaseParams
 
     override suspend fun execute(params: Params): List<Tweet> {
-
         return repository.getTweets(
             userId = params.userId
         ).map(TweetMapper::from)
+    }
+
+    suspend operator fun invoke(userId: String): List<Tweet> {
+        return execute(Params(userId))
     }
 }

@@ -1,15 +1,10 @@
 package com.tws.moments.app
 
 import android.content.Context
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.tws.moments.TWApplication
-import com.tws.moments.app.gsonadapters.TweetDeserializer
 import com.tws.moments.data.source.api.profile.ProfileService
-import com.tws.moments.data.source.api.tweet.TweetEntity
 import com.tws.moments.data.source.api.tweet.TweetsService
 import dagger.Module
 import dagger.Provides
@@ -75,5 +70,11 @@ object AppModule {
     @Provides
     fun providesTweetsService(retrofit: Retrofit): TweetsService {
         return retrofit.create(TweetsService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun providesDispatcher(): DispatcherAgent {
+        return DispatcherAgent()
     }
 }
