@@ -4,8 +4,8 @@ import com.tws.moments.domain.model.profile.Profile
 import com.tws.moments.domain.model.tweet.Tweet
 import com.tws.moments.domain.usecases.GetProfile
 import com.tws.moments.domain.usecases.GetTweets
-import com.tws.moments.domain.viewmodels.moments.MomentsViewModel
-import com.tws.moments.domain.viewmodels.moments.MomentsViewModel.Companion.PAGE_SIZE
+import com.tws.moments.presentation.viewmodels.moments.MomentsViewModel
+import com.tws.moments.presentation.viewmodels.moments.MomentsViewModel.Companion.PAGE_SIZE
 import com.tws.moments.presentation.ui.moments.MomentsState
 import io.mockk.coEvery
 import io.mockk.mockk

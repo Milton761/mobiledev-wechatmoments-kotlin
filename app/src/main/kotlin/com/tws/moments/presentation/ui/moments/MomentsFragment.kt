@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tws.moments.databinding.FragmentMomentsBinding
 import com.tws.moments.domain.model.tweet.Tweet
-import com.tws.moments.domain.viewmodels.moments.MomentsViewModel
+import com.tws.moments.presentation.viewmodels.moments.MomentsViewModel
 import com.tws.moments.presentation.adapters.ProfileAdapter
 import com.tws.moments.presentation.adapters.TweetAdapter
 import com.tws.moments.utils.dip

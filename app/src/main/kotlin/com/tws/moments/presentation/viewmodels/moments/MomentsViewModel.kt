@@ -1,4 +1,4 @@
-package com.tws.moments.domain.viewmodels.moments
+package com.tws.moments.presentation.viewmodels.moments
 
 import androidx.lifecycle.ViewModel
 import com.tws.moments.base.extensions.withSafeScope
