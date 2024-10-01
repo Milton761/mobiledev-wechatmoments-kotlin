@@ -7,35 +7,19 @@ import com.tws.moments.data.source.api.profile.ProfileSource
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Assert.assertEquals
 import org.junit.Test
-
 
 class ProfileSourceTest {
 
     private val profileService: ProfileService = mockk()
     private val profileSource = ProfileSource(profileService)
 
-    val jsonBody: String = """
-        {
-            "profile-image": "https://techops-recsys-lateral-hiring.github.io/moments-data/images/user/profile-image.jpeg",
-            "avatar": "https://techops-recsys-lateral-hiring.github.io/moments-data/images/user/avatar.png",
-            "nick": "Huan Huan",
-            "username": "hengzeng"
-        }
-    """.trimIndent()
-
-    private val profileResponse = okhttp3.Response.Builder()
-        .code(200)
-        .body(jsonBody.toResponseBody("application/json".toMediaType()))
-
     @Test
     fun `getProfile should return mapped Profile from ProfileService`() = runBlocking {
         // Arrange
         val userId = "123"
-        val profileEntity = ProfileEntity(userId, null, null, null)
+        val profileEntity = ProfileEntity("profileImageUrl", "avatarImgUrl", "nickname", "userName")
         val expectedProfile = ProfileMapper.from(profileEntity)
 
         coEvery { profileService.getProfile(userId) } returns profileEntity
@@ -44,6 +28,9 @@ class ProfileSourceTest {
         val actualProfile = profileSource.getProfile(userId)
 
         // Assert
-//        assertEquals(expectedProfile, actualProfile)
+        assertEquals(expectedProfile.username, actualProfile.username)
+        assertEquals(expectedProfile.profileImgUrl, actualProfile.profileImgUrl)
+        assertEquals(expectedProfile.avatarImgUrl, actualProfile.avatarImgUrl)
+        assertEquals(expectedProfile.nickname, actualProfile.nickname)
     }
 }
